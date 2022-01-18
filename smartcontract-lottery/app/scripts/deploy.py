@@ -15,6 +15,7 @@ def deploy_lottery():
         publish_source=config["networks"][network.show_active()].get("verify", False)
     )
     print("Deployed lottery!!!")
+    return lottery
 
 
 def start_lottery():
@@ -44,7 +45,7 @@ def end_lottery():
     end_transaction = lottery.endLottery({"from" : account})
     end_transaction.wait(1)
     time.sleep(60)
-    print("Lottery is end!!!")
+    print(f"{lottery.recentWinner()} is current winner!!!")
 
 
 def main():
