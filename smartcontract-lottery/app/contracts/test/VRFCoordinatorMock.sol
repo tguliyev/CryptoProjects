@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.7.0;
 
-import "@chainlink/contracts/src/v0.7/interfaces/LinkTokenInterface.sol";
-import "@chainlink/contracts/src/v0.7/VRFConsumerBase.sol";
+import "../../dependencies/chainlink-brownie-contracts@0.3.0/contracts/src/v0.7/interfaces/LinkTokenInterface.sol";
+import "../../dependencies/chainlink-brownie-contracts@0.3.0/contracts/src/v0.7/VRFConsumerBase.sol";
 
 contract VRFCoordinatorMock {
   LinkTokenInterface public LINK;
@@ -22,11 +22,7 @@ contract VRFCoordinatorMock {
     emit RandomnessRequest(sender, keyHash, seed);
   }
 
-  function callBackWithRandomness(
-    bytes32 requestId,
-    uint256 randomness,
-    address consumerContract
-  ) public {
+  function callBackWithRandomness(bytes32 requestId, uint256 randomness, address consumerContract) public {
     VRFConsumerBase v;
     bytes memory resp = abi.encodeWithSelector(v.rawFulfillRandomness.selector, requestId, randomness);
     uint256 b = 206000;

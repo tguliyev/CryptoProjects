@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.7.0;
 
-import "@chainlink/contracts/src/v0.7/interfaces/AggregatorV3Interface.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
-import "@chainlink/contracts/src/v0.7/VRFConsumerBase.sol";
+import "../dependencies/chainlink-brownie-contracts@0.3.0/contracts/src/v0.7/interfaces/AggregatorV3Interface.sol";
+import "../dependencies/openzeppelin-contracts@3.4.0/contracts/access/Ownable.sol";
+import "../dependencies/chainlink-brownie-contracts@0.3.0/contracts/src/v0.7/VRFConsumerBase.sol";
  
 enum LOTTERY_STATE { OPEN, CLOSED, CALCULATING_WINNER }
 
@@ -50,16 +50,6 @@ contract Lottery is Ownable, VRFConsumerBase {
     }
     
     function endLottery() public onlyOwner {
-        // uint256(
-        //     keccak256(
-        //         abi.encodePacked(
-        //          nonce,
-        //          msg.sender,
-        //          block.difficulty,   
-        //          block.timestamp   
-        //         )
-        //     )
-        // ) % players.lenght;
 
         lottery_state = LOTTERY_STATE.CALCULATING_WINNER;
         bytes32 requestId = requestRandomness(keyHash, fee);

@@ -1,8 +1,10 @@
+// SPDX-License-Identifier: MIT
+
 pragma solidity ^0.4.11;
 
 
-import "@chainlink/contracts/src/v0.4/ERC677Token.sol";
-import { StandardToken as linkStandardToken } from "@chainlink/contracts/src/v0.4/vendor/StandardToken.sol";
+import "../../dependencies/chainlink-brownie-contracts@0.3.0/contracts/src/v0.4/ERC677Token.sol";
+import { StandardToken as linkStandardToken } from "../../dependencies/chainlink-brownie-contracts@0.3.0/contracts/src/v0.4/vendor/StandardToken.sol";
 
 
 contract LinkToken is linkStandardToken, ERC677Token {
