@@ -18,6 +18,7 @@ contract MockV3Aggregator is AggregatorV2V3Interface {
   int256 public override latestAnswer;
   uint256 public override latestTimestamp;
   uint256 public override latestRound;
+  string __name= "hello";
 
   mapping(uint256 => int256) public override getAnswer;
   mapping(uint256 => uint256) public override getTimestamp;
